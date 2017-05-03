@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD01357A-C6A1-426D-9BA9-B01EAA32CC62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConDep.Execution</RootNamespace>
+    <AssemblyName>ConDep.Execution</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\ConDep.Execution.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.ServiceBus.4.0.0\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="YamlDotNet, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.4.1.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\ArtifactManifest.cs" />
+    <Compile Include="Config\ArtifactManifestConfigParser.cs" />
+    <Compile Include="Config\ArtifactManifestJsonSerializer.cs" />
+    <Compile Include="Config\ISerializeArtifactManifest.cs" />
+    <Compile Include="Config\ISerializeConfig.cs" />
+    <Compile Include="Config\JsonSerializer.cs" />
+    <Compile Include="PSScripts\ConDepNode\ConDepNodeResources.cs" />
+    <Compile Include="PSScripts\ConDep\ConDepResources.cs" />
+    <Compile Include="PSScripts\PowerShellResources.cs" />
+    <Compile Include="Relay\RelayConfig.cs" />
+    <Compile Include="Relay\RelayHandler.cs" />
+    <Compile Include="Resources\ConDepResourceFiles.cs" />
+    <Compile Include="Resources\ConDepResourceNotFoundException.cs" />
+    <Compile Include="RunbookConfigurationHandler.cs" />
+    <Compile Include="RunbookDependencyHandler.cs" />
+    <Compile Include="RunbookHandler.cs" />
+    <Compile Include="ConDepConfigurationExecutor.cs" />
+    <Compile Include="ConDepExecutionResult.cs" />
+    <Compile Include="ConDepNoRunbookDefinedException.cs" />
+    <Compile Include="ConDepNoRunbookTierDefinedException.cs" />
+    <Compile Include="ConDepNodePublisher.cs" />
+    <Compile Include="ConDepTierDoesNotExistInConfigException.cs" />
+    <Compile Include="Config\ConDepAssemblyHandler.cs" />
+    <Compile Include="Config\ConDepAssemblyNotFoundException.cs" />
+    <Compile Include="Config\ConDepConfigurationException.cs" />
+    <Compile Include="Config\ConDepConfigurationTypeNotFoundException.cs" />
+    <Compile Include="Config\ConDepFileReader.cs" />
+    <Compile Include="Config\ConDepNoServersFoundException.cs" />
+    <Compile Include="Config\ConfigHandler.cs" />
+    <Compile Include="Config\YamlSerializer.cs" />
+    <Compile Include="Config\EnvConfigParser.cs" />
+    <Compile Include="Config\Extensions.cs" />
+    <Compile Include="Config\IHandleConfigCrypto.cs" />
+    <Compile Include="Config\JsonConfigCrypto.cs" />
+    <Compile Include="Config\JsonExtensions.cs" />
+    <Compile Include="Config\YamlConfigCrypto.cs" />
+    <Compile Include="Config\YamlEncryptedNode.cs" />
+    <Compile Include="Config\YamlExtensions.cs" />
+    <Compile Include="Relay\DataContracts.cs" />
+    <Compile Include="FileHashGenerator.cs" />
+    <Compile Include="FilePublisher.cs" />
+    <Compile Include="IDiscoverRunbooks.cs" />
+    <Compile Include="IDiscoverServers.cs" />
+    <Compile Include="Relay\IOfferCommandRelay.cs" />
+    <Compile Include="IResolveRunbookDependencies.cs" />
+    <Compile Include="ITokenSource.cs" />
+    <Compile Include="LoadBalancerLookup.cs" />
+    <Compile Include="Logging\ConsoleLogger.cs" />
+    <Compile Include="Logging\LogResolver.cs" />
+    <Compile Include="Logging\TeamCityLogger.cs" />
+    <Compile Include="Logging\TeamCityMessageStatus.cs" />
+    <Compile Include="PostRemoteOps.cs" />
+    <Compile Include="PowerShellScriptPublisher.cs" />
+    <Compile Include="PreRemoteOps.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelayApiLogger.cs" />
+    <Compile Include="Relay\LogStream.cs" />
+    <Compile Include="Security\ConDepCryptoException.cs" />
+    <Compile Include="Security\EncryptedPassword.cs" />
+    <Compile Include="Security\JsonPasswordCrypto.cs" />
+    <Compile Include="ServerHandler.cs" />
+    <Compile Include="TimedException.cs" />
+    <Compile Include="Validation\ClientValidator.cs" />
+    <Compile Include="Validation\RemoteServerValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="PSScripts\ConDepNode\ConDepNode.psm1" />
+    <EmbeddedResource Include="PSScripts\ConDep\ConDep.psm1" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConDep.Dsl\ConDep.Dsl.csproj">
+      <Project>{e7eba0ac-b91d-450f-8a68-5adcf18fe17e}</Project>
+      <Name>ConDep.Dsl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
